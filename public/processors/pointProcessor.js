@@ -81,7 +81,7 @@ class TemplateTracker {
         if (this.frameCache.width !== width || this.frameCache.height !== height) {
             this.frameCache.width = width;
             this.frameCache.height = height;
-            this.frameCache.grayscale = new Uint8Array(pixelCount);
+            this.frameCache.grayscale = new Float32Array(pixelCount);
             this.frameCache.integral = new Uint32Array((width + 1) * (height + 1));
         }
 
@@ -92,7 +92,7 @@ class TemplateTracker {
         // Use same grayscale conversion as original for consistency
         for (let i = 0; i < pixelCount; i++) {
             const j = i * 4;
-            grayData[i] = Math.round(0.299 * rgbaData[j] + 0.587 * rgbaData[j + 1] + 0.114 * rgbaData[j + 2]);
+            grayData[i] = 0.299 * rgbaData[j] + 0.587 * rgbaData[j + 1] + 0.114 * rgbaData[j + 2];
         }
 
         // Compute integral image for O(1) sum queries
@@ -398,7 +398,10 @@ class TemplateTracker {
 
         // Coarse search with early termination
         let searchCount = 0;
-        const maxSearches = 200; // Limit search iterations
+        const area = (searchRight - searchLeft + 1) * (searchBottom - searchTop + 1);
+        const maxSearches = area;            // examine the whole window
+        // or
+        // const maxSearches = Math.min(area, 4000); // sensible upper bound for very big windows
 
         for (let y = searchTop; y <= searchBottom && searchCount < maxSearches; y += step) {
             for (let x = searchLeft; x <= searchRight && searchCount < maxSearches; x += step) {
