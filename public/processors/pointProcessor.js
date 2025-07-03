@@ -807,4 +807,12 @@ PointProcessor.addAnchorPoint = function (x, y, frameData) {
     return templateTracker.addTemplate(x, y, frameData);
 };
 
+PointProcessor.clear = function () {
+    templateTracker.trackedTemplates = [];
+    templateTracker.nextId = 1;
+    templateTracker.frameCount = 0;
+    templateTracker.spatialGrid.grid.clear();
+    console.log('Point tracking data cleared');
+};
+
 window.PointProcessor = PointProcessor;

@@ -24,6 +24,7 @@ class HoraceApp {
         this.canvas = document.getElementById('canvas');
         this.startBtn = document.getElementById('startBtn');
         this.stopBtn = document.getElementById('stopBtn');
+        this.clearBtn = document.getElementById('clearBtn');
         this.fpsDisplay = document.getElementById('fps');
         this.statusDisplay = document.getElementById('status');
 
@@ -35,6 +36,7 @@ class HoraceApp {
     setupEventListeners() {
         this.startBtn.addEventListener('click', () => this.start());
         this.stopBtn.addEventListener('click', () => this.stop());
+        this.clearBtn.addEventListener('click', () => this.clearAllData());
 
         this.motionToggle.addEventListener('change', (e) => {
             this.processorStates.motion = e.target.checked;
@@ -171,6 +173,22 @@ class HoraceApp {
 
     updateFpsDisplay() {
         this.fpsDisplay.textContent = this.fps;
+    }
+
+    clearAllData() {
+        console.log('Clearing all processor data...');
+        
+        for (const processorDef of this.processors) {
+            if (processorDef.processor && processorDef.processor.clear) {
+                try {
+                    processorDef.processor.clear();
+                } catch (error) {
+                    console.error(`Error clearing ${processorDef.name} processor:`, error);
+                }
+            }
+        }
+        
+        console.log('All processor data cleared');
     }
 
     updateStatus(status) {

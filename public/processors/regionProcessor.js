@@ -39,4 +39,8 @@ function RegionProcessor(ctx, frameData) {
     ctx.globalAlpha = 1.0;
 }
 
+RegionProcessor.clear = function() {
+    console.log('Region processor data cleared');
+};
+
 window.RegionProcessor = RegionProcessor;

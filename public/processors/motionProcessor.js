@@ -66,4 +66,8 @@ function MotionProcessor(ctx, frameData) {
     }
 }
 
+MotionProcessor.clear = function() {
+    console.log('Motion processor data cleared');
+};
+
 window.MotionProcessor = MotionProcessor;
