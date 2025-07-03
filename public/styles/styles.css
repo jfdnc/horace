@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #00ff88;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #cccccc;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.video-container {
+    position: relative;
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#video {
+    display: block;
+    width: 640px;
+    height: 480px;
+    object-fit: cover;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    cursor: crosshair;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.controls button {
+    background-color: #00ff88;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: #00cc66;
+}
+
+.controls button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.processors {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.processors label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 12px;
+    background-color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.processors label:hover {
+    background-color: #444;
+}
+
+.processors input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    font-size: 1.1em;
+    color: #cccccc;
+}
+
+.stats div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stats span {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    #video, #canvas {
+        width: 100%;
+        height: auto;
+        max-width: 640px;
+    }
+    
+    .processors {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}

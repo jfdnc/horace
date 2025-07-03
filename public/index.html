@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horace - Motion Tracker</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Horace</h1>
+            <p>Motion Tracker WebApp</p>
+        </header>
+        
+        <main>
+            <div class="video-container">
+                <video id="video" autoplay muted></video>
+                <canvas id="canvas"></canvas>
+            </div>
+            
+            <div class="controls">
+                <button id="startBtn">Start Camera</button>
+                <button id="stopBtn" disabled>Stop Camera</button>
+                <div class="processors">
+                    <label>
+                        <input type="checkbox" id="motionToggle">
+                        Motion Detection
+                    </label>
+                    <label>
+                        <input type="checkbox" id="pointToggle" checked>
+                        Point Tracking
+                    </label>
+                    <label>
+                        <input type="checkbox" id="regionToggle">
+                        Region Tracking
+                    </label>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div>FPS: <span id="fps">0</span></div>
+                <div>Status: <span id="status">Not started</span></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="camera/camera.js"></script>
+    <script src="camera/frameCapture.js"></script>
+    <script src="processors/motionProcessor.js"></script>
+    <script src="processors/pointProcessor.js"></script>
+    <script src="processors/regionProcessor.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
