@@ -68,8 +68,8 @@ class HoraceApp {
         const canvasX = x * scaleX;
         const canvasY = y * scaleY;
 
-        if (window.PointProcessor && window.PointProcessor.addAnchorPoint) {
-            window.PointProcessor.addAnchorPoint(canvasX, canvasY);
+        if (window.PointProcessor && window.PointProcessor.addAnchorPoint && this.frameCapture) {
+            window.PointProcessor.addAnchorPoint(canvasX, canvasY, this.frameCapture);
             console.log(`Added anchor point at (${canvasX.toFixed(1)}, ${canvasY.toFixed(1)})`);
         }
     }
