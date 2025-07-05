@@ -2,6 +2,12 @@
 
 A motion tracker webapp that uses the browser's webcam to capture video frames, processes them using modular FrameProcessors, and draws visualizations directly to a canvas.
 
+
+
+https://github.com/user-attachments/assets/b2ca7e89-1136-45ef-ba42-f76737924c0f
+
+
+
 ## Features
 
 - Real-time webcam video capture
