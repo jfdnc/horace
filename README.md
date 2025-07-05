@@ -1,5 +1,8 @@
 # Horace
 
+TODO:
+- [ ] Move things into rust and hook up wasm (wanted to see how far we could get with pure JS first--it works pretty well tbh lol)
+
 A motion tracker webapp that uses the browser's webcam to capture video frames, processes them using modular FrameProcessors, and draws visualizations directly to a canvas.
 
 
